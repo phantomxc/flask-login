@@ -334,7 +334,7 @@ class LoginManager(object):
         '''Loads user from session or remember_me cookie as applicable'''
 
         if current_app.static_url_path is not None and current_app.static_url_path in request.path:
-            _request_ctx_static.top.user = self.anonymous_user()
+            _request_ctx_stack.top.user = self.anonymous_user()
             return
         user_accessed.send(current_app._get_current_object())
 
